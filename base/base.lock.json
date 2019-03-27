@@ -1,5 +1,5 @@
 {
-  "revision_id": "78f3de50a9d60264ebf8eb21d7beff8950bfb8e894e9be728661aab969262529",
+  "revision_id": "477b469de2e684a3357cf122ed6811fce52698caa8659f558464204080f4f092",
   "name": "base",
   "run_list": [
     "recipe[myaudit::default]"
@@ -23,11 +23,11 @@
       "version": "11.0.6",
       "identifier": "e7b671ad73e94941cfc2f8eca357d2920ce0e036",
       "dotted_decimal_identifier": "65221318977775945.18524309793055575.231524723122230",
-      "cache_key": "chef-client-576d7b0df15efd2b7ae817ebd676ffbf23df706b",
+      "cache_key": "chef-client-830104a4af74f048f27c25b63fe7a2fb4673cb5d",
       "origin": "git://github.com/seankbeard/cookbooks.git",
       "source_options": {
         "git": "git://github.com/seankbeard/cookbooks.git",
-        "revision": "576d7b0df15efd2b7ae817ebd676ffbf23df706b",
+        "revision": "830104a4af74f048f27c25b63fe7a2fb4673cb5d",
         "branch": "master",
         "rel": "chef-client"
       }
@@ -56,13 +56,13 @@
     },
     "myaudit": {
       "version": "0.1.0",
-      "identifier": "4f1bed15d621fa88e2fc34e2504210fd21284b07",
-      "dotted_decimal_identifier": "22267228247695866.38530169679532098.18679369059079",
-      "cache_key": "myaudit-576d7b0df15efd2b7ae817ebd676ffbf23df706b",
+      "identifier": "d1e1105413416b3987a089ec6155fa61ec029c85",
+      "dotted_decimal_identifier": "59075730378801515.16193197250994517.275298478365829",
+      "cache_key": "myaudit-830104a4af74f048f27c25b63fe7a2fb4673cb5d",
       "origin": "git://github.com/seankbeard/cookbooks.git",
       "source_options": {
         "git": "git://github.com/seankbeard/cookbooks.git",
-        "revision": "576d7b0df15efd2b7ae817ebd676ffbf23df706b",
+        "revision": "830104a4af74f048f27c25b63fe7a2fb4673cb5d",
         "branch": "master",
         "rel": "myaudit"
       }
