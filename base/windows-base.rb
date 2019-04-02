@@ -3,16 +3,15 @@
 # For more information on the Policyfile feature, visit
 # https://docs.chef.io/policyfile.html
 
-name "base"
+name "windows-base"
 default_source :supermarket
 
-cookbook 'chef-client', github: 'seankbeard/cookbooks', branch: 'master', rel: 'chef-client'
 cookbook 'myaudit', github: 'seankbeard/cookbooks', branch: 'master', rel: 'myaudit'
 
-run_list 'chef-client'
-run_list 'myaudit::default'
-run_list 'os-hardening'
+run_list 'chef-client', 'windows-hardening', 'myaudit'
 
 # Override the Chef Client cookbook with the following attributes
 override['chef_client']['interval']    = '200'
 override['chef_client']['splay']       = '30'
+##override['windows_hardening']['rdp']['harden'] = false
+override['security_policy']['rights']['SeNetworkLogonRight'] = '*S-1-5-32-544'

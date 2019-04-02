@@ -1,14 +1,15 @@
 {
-  "revision_id": "e90e77e394e816b8ac181e6ec97e407a25e44750e2dea2fa8ca08e6918bc9116",
+  "revision_id": "a2e2008adef102834c8620647314847e7972532a10b3bcbdc9e0bd48f80216c0",
   "name": "webserver",
   "run_list": [
     "recipe[myaudit::default]",
-    "recipe[apache::default]"
+    "recipe[apache::default]",
+    "recipe[os-hardening::default]"
   ],
   "included_policy_locks": [
     {
       "name": "base",
-      "revision_id": "477b469de2e684a3357cf122ed6811fce52698caa8659f558464204080f4f092",
+      "revision_id": "ea8f2c8cf7eacf09faa79f50bbf5dd1ce7688124fa319fa653455f6197f4518e",
       "source_options": {
         "path": "../base/base.lock.json"
       }
@@ -19,11 +20,11 @@
       "version": "2.5.0",
       "identifier": "fa9801fe5f25e120d7fc8acec02db1255f6f1bc6",
       "dotted_decimal_identifier": "70535878507701729.9244678915276845.194774073023430",
-      "cache_key": "apache-830104a4af74f048f27c25b63fe7a2fb4673cb5d",
+      "cache_key": "apache-089662a8bde3a0e57f26e3c2c20de3f093cbda12",
       "origin": "git://github.com/seankbeard/cookbooks.git",
       "source_options": {
         "git": "git://github.com/seankbeard/cookbooks.git",
-        "revision": "830104a4af74f048f27c25b63fe7a2fb4673cb5d",
+        "revision": "089662a8bde3a0e57f26e3c2c20de3f093cbda12",
         "branch": "master",
         "rel": "apache"
       }
@@ -43,11 +44,11 @@
       "version": "11.0.6",
       "identifier": "e7b671ad73e94941cfc2f8eca357d2920ce0e036",
       "dotted_decimal_identifier": "65221318977775945.18524309793055575.231524723122230",
-      "cache_key": "chef-client-830104a4af74f048f27c25b63fe7a2fb4673cb5d",
+      "cache_key": "chef-client-089662a8bde3a0e57f26e3c2c20de3f093cbda12",
       "origin": "git://github.com/seankbeard/cookbooks.git",
       "source_options": {
         "git": "git://github.com/seankbeard/cookbooks.git",
-        "revision": "830104a4af74f048f27c25b63fe7a2fb4673cb5d",
+        "revision": "089662a8bde3a0e57f26e3c2c20de3f093cbda12",
         "branch": "master",
         "rel": "chef-client"
       }
@@ -76,15 +77,48 @@
     },
     "myaudit": {
       "version": "0.1.0",
-      "identifier": "d1e1105413416b3987a089ec6155fa61ec029c85",
-      "dotted_decimal_identifier": "59075730378801515.16193197250994517.275298478365829",
-      "cache_key": "myaudit-830104a4af74f048f27c25b63fe7a2fb4673cb5d",
+      "identifier": "3449bb1a0c4f344472a6054ea7921a96c4284c16",
+      "dotted_decimal_identifier": "14717766733680436.19266355795502994.29234838391830",
+      "cache_key": "myaudit-089662a8bde3a0e57f26e3c2c20de3f093cbda12",
       "origin": "git://github.com/seankbeard/cookbooks.git",
       "source_options": {
         "git": "git://github.com/seankbeard/cookbooks.git",
-        "revision": "830104a4af74f048f27c25b63fe7a2fb4673cb5d",
+        "revision": "089662a8bde3a0e57f26e3c2c20de3f093cbda12",
         "branch": "master",
         "rel": "myaudit"
+      }
+    },
+    "ohai": {
+      "version": "5.2.5",
+      "identifier": "f393ae21b9c53af8a3ee75662fce43f3c2ce5167",
+      "dotted_decimal_identifier": "68560795440104762.69986038791417806.74714224415079",
+      "cache_key": "ohai-5.2.5-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.2.5/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.2.5/download",
+        "version": "5.2.5"
+      }
+    },
+    "os-hardening": {
+      "version": "3.2.1",
+      "identifier": "4243894673d933f541a9946dbef3cc43bce496d6",
+      "dotted_decimal_identifier": "18651605334481203.69033565889609459.224591303972566",
+      "cache_key": "os-hardening-3.2.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/os-hardening/versions/3.2.1/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/os-hardening/versions/3.2.1/download",
+        "version": "3.2.1"
+      }
+    },
+    "sysctl": {
+      "version": "1.0.5",
+      "identifier": "3d2a23146a32c45b9a3635a51b7814c9528f24d5",
+      "dotted_decimal_identifier": "17216303734076100.25783780499594104.22854906094805",
+      "cache_key": "sysctl-1.0.5-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/1.0.5/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/1.0.5/download",
+        "version": "1.0.5"
       }
     }
   },
@@ -122,6 +156,18 @@
       [
         "myaudit",
         "= 0.1.0"
+      ],
+      [
+        "ohai",
+        "= 5.2.5"
+      ],
+      [
+        "os-hardening",
+        "= 3.2.1"
+      ],
+      [
+        "sysctl",
+        "= 1.0.5"
       ]
     ],
     "dependencies": {
@@ -151,6 +197,21 @@
         [
           "audit",
           ">= 0.0.0"
+        ]
+      ],
+      "ohai (5.2.5)": [
+
+      ],
+      "os-hardening (3.2.1)": [
+        [
+          "sysctl",
+          "~> 1.0"
+        ]
+      ],
+      "sysctl (1.0.5)": [
+        [
+          "ohai",
+          ">= 5.0.0"
         ]
       ]
     }

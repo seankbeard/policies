@@ -1,8 +1,10 @@
 {
-  "revision_id": "f20c588a8ef287e22ab7fde4f1358b4bcc88df3a97c69de0fe6a7854721567b3",
-  "name": "base",
+  "revision_id": "443f75eeb8b3dd15bb5c696d0c3f99464f28d41c33179e6bedd3373eaef71848",
+  "name": "windows-base",
   "run_list": [
-    "recipe[os-hardening::default]"
+    "recipe[chef-client::default]",
+    "recipe[windows-hardening::default]",
+    "recipe[myaudit::default]"
   ],
   "included_policy_locks": [
 
@@ -20,16 +22,14 @@
       }
     },
     "chef-client": {
-      "version": "11.0.6",
-      "identifier": "e7b671ad73e94941cfc2f8eca357d2920ce0e036",
-      "dotted_decimal_identifier": "65221318977775945.18524309793055575.231524723122230",
-      "cache_key": "chef-client-f2dc9a16ef71842965da6278a552759018af26b0",
-      "origin": "git://github.com/seankbeard/cookbooks.git",
+      "version": "11.1.1",
+      "identifier": "a253289e7224fd91da91ff76225611c952855979",
+      "dotted_decimal_identifier": "45690380149204221.41054192214090326.19556370569593",
+      "cache_key": "chef-client-11.1.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-client/versions/11.1.1/download",
       "source_options": {
-        "git": "git://github.com/seankbeard/cookbooks.git",
-        "revision": "f2dc9a16ef71842965da6278a552759018af26b0",
-        "branch": "master",
-        "rel": "chef-client"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-client/versions/11.1.1/download",
+        "version": "11.1.1"
       }
     },
     "cron": {
@@ -67,37 +67,26 @@
         "rel": "myaudit"
       }
     },
-    "ohai": {
-      "version": "5.2.5",
-      "identifier": "f393ae21b9c53af8a3ee75662fce43f3c2ce5167",
-      "dotted_decimal_identifier": "68560795440104762.69986038791417806.74714224415079",
-      "cache_key": "ohai-5.2.5-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.2.5/download",
+    "windows-hardening": {
+      "version": "0.9.1",
+      "identifier": "fb514509b65b7fa504bdf236ec6ece70d9657452",
+      "dotted_decimal_identifier": "70739576111913855.46448585016274030.226984078963794",
+      "cache_key": "windows-hardening-0.9.1-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/windows-hardening/versions/0.9.1/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ohai/versions/5.2.5/download",
-        "version": "5.2.5"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows-hardening/versions/0.9.1/download",
+        "version": "0.9.1"
       }
     },
-    "os-hardening": {
-      "version": "3.2.1",
-      "identifier": "4243894673d933f541a9946dbef3cc43bce496d6",
-      "dotted_decimal_identifier": "18651605334481203.69033565889609459.224591303972566",
-      "cache_key": "os-hardening-3.2.1-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/os-hardening/versions/3.2.1/download",
+    "windows-security-policy": {
+      "version": "0.3.9",
+      "identifier": "b2e3ba1e3ced20a311a7903a59c8198183a82ec7",
+      "dotted_decimal_identifier": "50352934365228320.45899832580790728.28044050312903",
+      "cache_key": "windows-security-policy-0.3.9-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/windows-security-policy/versions/0.3.9/download",
       "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/os-hardening/versions/3.2.1/download",
-        "version": "3.2.1"
-      }
-    },
-    "sysctl": {
-      "version": "1.0.5",
-      "identifier": "3d2a23146a32c45b9a3635a51b7814c9528f24d5",
-      "dotted_decimal_identifier": "17216303734076100.25783780499594104.22854906094805",
-      "cache_key": "sysctl-1.0.5-supermarket.chef.io",
-      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/1.0.5/download",
-      "source_options": {
-        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/sysctl/versions/1.0.5/download",
-        "version": "1.0.5"
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/windows-security-policy/versions/0.3.9/download",
+        "version": "0.3.9"
       }
     }
   },
@@ -108,6 +97,11 @@
     "chef_client": {
       "interval": "200",
       "splay": "30"
+    },
+    "security_policy": {
+      "rights": {
+        "SeNetworkLogonRight": "*S-1-5-32-544"
+      }
     }
   },
   "solution_dependencies": {
@@ -118,7 +112,7 @@
       ],
       [
         "chef-client",
-        ">= 0.0.0"
+        "= 11.1.1"
       ],
       [
         "cron",
@@ -133,23 +127,19 @@
         ">= 0.0.0"
       ],
       [
-        "ohai",
-        "= 5.2.5"
+        "windows-hardening",
+        "= 0.9.1"
       ],
       [
-        "os-hardening",
-        "= 3.2.1"
-      ],
-      [
-        "sysctl",
-        "= 1.0.5"
+        "windows-security-policy",
+        "= 0.3.9"
       ]
     ],
     "dependencies": {
       "audit (7.4.1)": [
 
       ],
-      "chef-client (11.0.6)": [
+      "chef-client (11.1.1)": [
         [
           "cron",
           ">= 4.2.0"
@@ -171,20 +161,14 @@
           ">= 0.0.0"
         ]
       ],
-      "ohai (5.2.5)": [
+      "windows-hardening (0.9.1)": [
+        [
+          "windows-security-policy",
+          ">= 0.0.0"
+        ]
+      ],
+      "windows-security-policy (0.3.9)": [
 
-      ],
-      "os-hardening (3.2.1)": [
-        [
-          "sysctl",
-          "~> 1.0"
-        ]
-      ],
-      "sysctl (1.0.5)": [
-        [
-          "ohai",
-          ">= 5.0.0"
-        ]
       ]
     }
   }
